@@ -42,39 +42,36 @@ object SparkDirectStream extends App{
 
   stream.map(record => record.value)
     .foreachRDD(rdd => {
-        val d = rdd.collect().foreach(line => {
-          println(line)
-          val linemap = jsonStrToMap(line)
-          if(linemap("safety") == 0) {
-            send a new Mail (
-              from = ("weapon@weapon.weapon", "NoName"),
-              to = "localhost@local.com",
-              subject = "ALERT, SAFETY OFF",
-              message = s"Safety OFF for weapon id ${linemap("idn")}"
-            )
-          }
-          if(linemap("battery").toString.toInt < 10) {
-            send a new Mail (
-              from = ("weapon@weapon.weapon", "NoName"),
-              to = "localhost@local.com",
-              subject = "ALERT, BATTERY VERY LOW",
-              message = s"Battery Low for weapon id ${linemap("idn")}"
-            )
-          }
-          val timestamp: Long = System.currentTimeMillis / 1000
-          if (!Option(d).getOrElse("").isEmpty){
-            val writer = new PrintWriter (new File (path + timestamp) )
-            writer.write(d)
-            print (d)
-            writer.close ()
-          }
-
-
-        })
+      val d = rdd.collect().foreach(line => {
+        println(line)
+        val linemap = jsonStrToMap(line)
+        if(linemap("safety") == 0) {
+          send a new Mail (
+            from = ("weapon@weapon.weapon", "NoName"),
+            to = "localhost@local.com",
+            subject = "ALERT, SAFETY OFF",
+            message = s"Safety OFF for weapon id ${linemap("idn")}"
+          )
+        }
+        if(linemap("battery").toString.toInt < 10) {
+          send a new Mail (
+            from = ("weapon@weapon.weapon", "NoName"),
+            to = "localhost@local.com",
+            subject = "ALERT, BATTERY VERY LOW",
+            message = s"Battery Low for weapon id ${linemap("idn")}"
+          )
+        }
+      })
+      val b = rdd.collect().mkString("\n")
+      val timestamp: Long = System.currentTimeMillis / 1000
+      if (!Option(b).getOrElse("").isEmpty){
+        val writer = new PrintWriter (new File (path + timestamp) )
+        writer.write(b)
+        print (b)
+        writer.close ()
+      }
       Thread.sleep(1)
-
     })
-
 
   ssc.start()
   ssc.awaitTermination()
