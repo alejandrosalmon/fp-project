@@ -4,7 +4,7 @@
 		module="projectscala-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20190405022531"
+		publication="20190405042227"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
