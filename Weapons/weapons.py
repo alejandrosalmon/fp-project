@@ -44,30 +44,7 @@ class Weapon():
         data = json.dumps(self.__dict__) + "\n"
         return data
 
-class Bullets():
-    def __init__(self,idn):
-        self.idn = idn
-        self.shot= 0
-        self.location = random.choice(['School', 'Hospital', 'Mountain','Field','Sea','Sky'])
-        self.battery = 99
-        # 1 = True  0 = False
-        self.hit = 0
 
-    def shot(self):
-        self.shot = 1
-        self.battery -= 10
-        self.hit = random.choice([0,1])
-
-class Writer():
-    def create_file(self, path, data):
-        f = open(path,"w")
-        f.write(data)
-        f.close()
-       
-    def append_file(self, path, data):
-        f = open(path,"a")
-        f.write(data)
-        f.close()
 
 weapons = []
 wr = Writer()
