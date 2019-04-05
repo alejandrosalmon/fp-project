@@ -17,7 +17,7 @@ class Weapon():
         # 1 = True  0 = False
         self.working = 1
         self.safety = 1
-        self.shots = random.random()*10
+        self.shots = random.randrange(0,10000)
 
     def randomize(self):
         if self.working == 0:
@@ -27,43 +27,24 @@ class Weapon():
         if self.battery > 15:
             self.battery -= random.randrange(0,3)
         else:
-            choice = random.randrange(0,2)
-            if choice == 0:
-                self.battery = 0
+            choice = random.randrange(0,10000)
+            if choice == 1337:
+                self.battery = random.randrange(0,10)
             else:
                 self.battery = 100
         self.location = random.choice(['School', 'Hospital', 'Mountain','Field','Sea','Sky'])
-        self.safety = random.randrange(0,2)
-        self.shots += random.random()*100
+        if (self.safety == 1) and (random.randrange(0,10000) == 1337):
+        	self.safety = 0
+        elif (self.safety == 0) and (random.randrange(0,1000) == 777):
+                self.safety = 1
+        if (self.working == 1) and (self.safety == 0):
+                self.shots += random.randrange(0,30)
 
     def to_json(self):
         data = json.dumps(self.__dict__) + "\n"
         return data
 
-class Bullets():
-    def __init__(self,idn):
-        self.idn = idn
-        self.shot= 0
-        self.location = random.choice(['School', 'Hospital', 'Mountain','Field','Sea','Sky'])
-        self.battery = 99
-        # 1 = True  0 = False
-        self.hit = 0
 
-    def shot(self):
-        self.shot = 1
-        self.battery -= 10
-        self.hit = random.choice([0,1])
-
-class Writer():
-    def create_file(self, path, data):
-        f = open(path,"w")
-        f.write(data)
-        f.close()
-       
-    def append_file(self, path, data):
-        f = open(path,"a")
-        f.write(data)
-        f.close()
 
 weapons = []
 wr = Writer()

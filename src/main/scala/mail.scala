@@ -47,6 +47,12 @@ package object mail {
       mail.cc foreach (commonsMail.addCc(_))
       mail.bcc foreach (commonsMail.addBcc(_))
 
+      // gmail config
+      commonsMail.setHostName("localhost")
+      commonsMail.setAuthentication("aa","aa")
+      commonsMail.setSSLOnConnect(false)
+      commonsMail.setSmtpPort(2525)
+
       commonsMail.
         setFrom(mail.from._1, mail.from._2).
         setSubject(mail.subject).
