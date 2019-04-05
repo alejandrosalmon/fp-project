@@ -4,7 +4,7 @@
 		module="pjscala$sources"
 		revision="0.1"
 		status="integration"
-		publication="20190405042232"
+		publication="20190405135707"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

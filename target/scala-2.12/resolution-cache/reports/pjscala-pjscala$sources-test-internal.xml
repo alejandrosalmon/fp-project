@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="test-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190405042232"/>
+		date="20190405135707"/>
 	<dependencies>
 		<module organisation="org.apache.commons" name="commons-email">
 			<revision name="1.5" status="release" pubdate="20170729160320" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-email/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="158">
