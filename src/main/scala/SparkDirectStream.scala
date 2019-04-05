@@ -37,7 +37,6 @@ object SparkDirectStream extends App{
         print(d)
     })
 
-
   ssc.start()
   ssc.awaitTermination()
 }
